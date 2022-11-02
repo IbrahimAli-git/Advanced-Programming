@@ -37,6 +37,7 @@ void Vehicle::addVehicle(vector<Vehicle> &vec) {
     cout << "\n";
 }
 
+//https://iq.opengenus.org/ways-to-remove-elements-from-vector-cpp/
 void Vehicle::removeVehicle(vector<Vehicle> &vec) {
     cout << "Please enter registration number: ";
     string regNumber;
@@ -53,40 +54,61 @@ void Vehicle::removeVehicle(vector<Vehicle> &vec) {
     cout << "\n";
 }
 
-void Vehicle::sortVehiclesByRegNumber() {
+
+void Vehicle::searchForBike(vector<Vehicle> &vec) {
 
 }
 
-void Vehicle::searchForBike() {
-
+void Vehicle::searchForCar(vector<Vehicle> &vec) {
+    int option = 0;
+    do {
+        cout << "Search for a car by :\n";
+        cout << "--------------------\n";
+        cout << "1) Registration number\n";
+        cout << "2) Number of seats\n";
+        cout << "3) Number of doors\n";
+        cout << "9) Return to main menu\n";
+        cout << "Please choose an option:\n";
+        cin >> option;
+        switch (option) {
+            case 1:
+                searchByRegNumber(vec);
+                break;
+            case 2:
+                searchByNumberOfSeats(vec);
+                break;
+            case 3:
+                searchByNumberOfDoors(vec);
+                break;
+            default:
+                cout << "Please enter option above\n";
+                break;
+        }
+        
+    } while (option != 9);
 }
 
-void Vehicle::sortByNumberOfDoors() {
-
-}
-
-void Vehicle::sortByNumberOfSeats() {
-
-}
-
-void sortByNumberOfSeats() {
-    cout << "Enter number of seats: \n";
-    int numberOfSeat = 0;
-    cin >> numberOfSeat;
-}
-
-void sortByNumberOfDoors() {
-    cout << "Enter number of doors: \n";
-    int numberOfDoors = 0;
-    cin >> numberOfDoors;
-}
-
-void Vehicle::sortByCostPerDay(vector<Vehicle> &vec) {
-    for (int i = 0; i < vec.size(); i++) {
-        for (int j = 0; j < vec.size(); j++) {
-
+void Vehicle::searchByRegNumber(vector<Vehicle> &vec) {
+    cout << "Please enter registration number: ";
+    string reg_number;
+    cin >> reg_number;
+    cout << "\n";
+    cout << "List of cars matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (const auto &item: vec){
+        if (item.reg_number == reg_number){
+            cout << item.getRegNumber() << "\t\t\t\t\t" << item.getType() << " \n";
         }
     }
+}
+
+void Vehicle::searchByNumberOfSeats(vector<Vehicle> &vec) {
+
+}
+
+void Vehicle::searchByNumberOfDoors(vector<Vehicle> &vec){
+
 }
 
 void Vehicle::printVehicles(vector<Vehicle> &vec) {
@@ -97,38 +119,29 @@ void Vehicle::printVehicles(vector<Vehicle> &vec) {
     }
 }
 
-void Vehicle::searchForCar() {
-    cout << "Search for a car by :\n";
-    cout << "--------------------\n";
-    cout << "1) Registration number\n";
-    cout << "2) Number of seats\n";
-    cout << "3) Number of doors\n";
-    cout << "9) Return to main menu\n";
+void Vehicle::sortVehiclesByRegNumber() {
 
-    cout << "Please choose an option:\n";
-    int option = 0;
-    cin >> option;
+}
 
-    switch (option) {
-        case 1:
-            sortVehiclesByRegNumber();
-            break;
-        case 2:
-            sortByNumberOfSeats();
-            break;
-        case 3:
-            sortByNumberOfDoors();
-            break;
-        case 9:
-            break;
-        default:
-            cout << "Please enter number above";
-            break;
+void Vehicle::sortByCostPerDay(vector<Vehicle> &vec) {
+    for (int i = 0; i < vec.size(); i++) {
+        for (int j = 0; j < vec.size(); j++) {
+
+        }
     }
+}
 
-    cout << "List of cars matching that search:\n";
+void Vehicle::sortByNumberOfDoors() {
+    cout << "Enter number of doors: \n";
+    int numberOfDoors = 0;
+    cin >> numberOfDoors;
 
-    cout << "Enter number to choose vehicle or 0 to return to main menu: \n";
+}
+
+void Vehicle::sortByNumberOfSeats() {
+    cout << "Enter number of seats: \n";
+    int numberOfSeat = 0;
+    cin >> numberOfSeat;
 }
 
 int Vehicle::getAge() const {

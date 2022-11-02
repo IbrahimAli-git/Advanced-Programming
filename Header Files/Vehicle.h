@@ -15,11 +15,14 @@ public:
     ~Vehicle();
     void addVehicle(vector<Vehicle> &vec);
     void removeVehicle(vector<Vehicle> &vec);
-    void searchForCar();
-    void searchForBike();
+    void searchForCar(vector<Vehicle> &vec);
+    void searchForBike(vector<Vehicle> &vec);
+    void searchByRegNumber(vector<Vehicle> &vec);
+    void searchByNumberOfSeats(vector<Vehicle> &vec);
+    void searchByNumberOfDoors(vector<Vehicle> &vec);
+    void printVehicles(vector<Vehicle> &vec);
     void sortVehiclesByRegNumber();
     void sortByCostPerDay(vector<Vehicle> &vec);
-    void printVehicles(vector<Vehicle> &vec);
     void sortByNumberOfDoors();
     void sortByNumberOfSeats();
     virtual int getAge() const;

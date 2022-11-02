@@ -40,10 +40,10 @@ void mainMenu() {
                 vehicle.removeVehicle(vector);
                 break;
             case 3:
-                vehicle.searchForCar();
+                vehicle.searchForCar(vector);
                 break;
             case 4:
-                vehicle.searchForBike();
+                vehicle.searchForBike(vector);
                 break;
             case 5:
                 vehicle.sortVehiclesByRegNumber();
