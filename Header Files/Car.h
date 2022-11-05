@@ -21,4 +21,6 @@ public:
     int getNumberOfSeats() const;
     void setNumberOfSeats(int numberOfSeats);
     Car createCar();
+
+    Car(Vehicle& vehicle);
 };

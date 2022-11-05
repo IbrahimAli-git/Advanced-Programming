@@ -20,11 +20,10 @@ public:
     void searchByRegNumber(vector<Vehicle> &vec);
     void searchByNumberOfSeats(vector<Vehicle> &vec);
     void searchByNumberOfDoors(vector<Vehicle> &vec);
-    void printVehicles(vector<Vehicle> &vec);
-    void sortVehiclesByRegNumber();
     void sortByCostPerDay(vector<Vehicle> &vec);
-    void sortByNumberOfDoors();
-    void sortByNumberOfSeats();
+    void sortByRegistrationNumber(vector<Vehicle> &vec);
+    void printVehicles(vector<Vehicle> &vec);
+    void deleteVehicles(vector<Vehicle> &vec);
     virtual int getAge() const;
     virtual void setAge(int age);
     virtual const string &getRegNumber() const;

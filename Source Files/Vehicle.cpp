@@ -22,7 +22,8 @@ Vehicle::~Vehicle() {
 }
 
 void Vehicle::addVehicle(vector<Vehicle> &vec) {
-    cout << "Would you like to enter a car or bike: ";
+    cout << "Would you like to enter a car or bike: \n";
+
     string userInput;
     cin >> userInput;
     if (userInput == "car") {
@@ -44,12 +45,13 @@ void Vehicle::removeVehicle(vector<Vehicle> &vec) {
     cin >> regNumber;
     int index;
 
-    for (int i = 0; i < vec.size(); ++i) {
+    for (int i = 0; i < vec.size(); i++){
         if (vec[i].getRegNumber() == regNumber){
             index = i;
         }
     }
-    vec.erase(vec.begin()+index);
+
+    vec.erase(vec.begin() + index);
     cout << "Vehicle deleted\n";
     cout << "\n";
 }
@@ -84,30 +86,71 @@ void Vehicle::searchForCar(vector<Vehicle> &vec) {
                 cout << "Please enter option above\n";
                 break;
         }
-        
+
     } while (option != 9);
 }
 
 void Vehicle::searchByRegNumber(vector<Vehicle> &vec) {
-    cout << "Please enter registration number: ";
+    cout << "Please enter registration number: \n";
     string reg_number;
     cin >> reg_number;
     cout << "\n";
+    cout << "List of vehicles matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (int i = 0; i < vec.size(); i++) {
+        if (vec[i].getRegNumber() == reg_number) {
+            cout << vec[i].getRegNumber() << "\t\t\t\t\t" << vec[i].getType() << " \n";
+        }
+    }
+    cout << "\n";
+}
+
+void Vehicle::searchByNumberOfSeats(vector<Vehicle> &vec) {
+    cout << "Please enter number of seats: \n";
+    int seats;
+    cin >> seats;
     cout << "List of cars matching that search: \n";
     cout << "Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "------------------ - ------------      ----------\n";
-    for (const auto &item: vec){
-        if (item.reg_number == reg_number){
-            cout << item.getRegNumber() << "\t\t\t\t\t" << item.getType() << " \n";
+    for (auto &item: vec) {
+        if (item.getType() == "car") {
+            Car c(item);
+            if (c.getNumberOfSeats() == seats) {
+                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+            }
+        }
+    }
+    cout << "\n";
+}
+
+void Vehicle::searchByNumberOfDoors(vector<Vehicle> &vec) {
+    cout << "Please enter number of doors: \n";
+    int doors;
+    cin >> doors;
+    cout << "List of cars matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (auto &item: vec) {
+        if (item.getType() == "car") {
+            Car c(item);
+            if (c.getNumberOfDoors() == doors) {
+                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+            }
+        }
+    }
+    cout << "\n";
+}
+
+void Vehicle::sortByCostPerDay(vector<Vehicle> &vec) {
+    for (int i = 0; i < vec.size(); i++) {
+        for (int j = 0; j < vec.size(); j++) {
+
         }
     }
 }
 
-void Vehicle::searchByNumberOfSeats(vector<Vehicle> &vec) {
-
-}
-
-void Vehicle::searchByNumberOfDoors(vector<Vehicle> &vec){
+void Vehicle::sortByRegistrationNumber(vector<Vehicle> &vec){
 
 }
 
@@ -119,29 +162,8 @@ void Vehicle::printVehicles(vector<Vehicle> &vec) {
     }
 }
 
-void Vehicle::sortVehiclesByRegNumber() {
+void Vehicle::deleteVehicles(vector<Vehicle> &vec){
 
-}
-
-void Vehicle::sortByCostPerDay(vector<Vehicle> &vec) {
-    for (int i = 0; i < vec.size(); i++) {
-        for (int j = 0; j < vec.size(); j++) {
-
-        }
-    }
-}
-
-void Vehicle::sortByNumberOfDoors() {
-    cout << "Enter number of doors: \n";
-    int numberOfDoors = 0;
-    cin >> numberOfDoors;
-
-}
-
-void Vehicle::sortByNumberOfSeats() {
-    cout << "Enter number of seats: \n";
-    int numberOfSeat = 0;
-    cin >> numberOfSeat;
 }
 
 int Vehicle::getAge() const {

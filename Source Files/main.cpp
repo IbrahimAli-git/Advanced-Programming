@@ -13,10 +13,9 @@ using namespace std;
 //EF56 OPQ			£24.00		Bike
 //GH78 RST			£19.50		Car
 
-//PUSH ALL OF YOUR CODE TO GITHUB
 
 void mainMenu() {
-    vector<Vehicle> vector;
+    vector<Vehicle > vec;
     Vehicle vehicle;
     int option = 0;
 
@@ -34,22 +33,22 @@ void mainMenu() {
         cin >> option;
         switch (option) {
             case 1:
-                vehicle.addVehicle(vector);
+                vehicle.addVehicle(vec);
                 break;
             case 2:
-                vehicle.removeVehicle(vector);
+                vehicle.removeVehicle(vec);
                 break;
             case 3:
-                vehicle.searchForCar(vector);
+                vehicle.searchForCar(vec);
                 break;
             case 4:
-                vehicle.searchForBike(vector);
+                vehicle.searchForBike(vec);
                 break;
             case 5:
-                vehicle.sortVehiclesByRegNumber();
+                vehicle.sortByRegistrationNumber(vec);
                 break;
             case 6:
-                vehicle.sortByCostPerDay(vector);
+                vehicle.sortByCostPerDay(vec);
                 break;
             case 9:
                 break;
@@ -58,10 +57,13 @@ void mainMenu() {
                 break;
         }
     } while (option != 9);
-    vehicle.printVehicles(vector);
-//    delete(vehicle);
-//    delete car and bike objects
-//    Exception and error handling
+    vehicle.printVehicles(vec);
+//  Exception and error handling
+//  PUSH ALL OF YOUR CODE TO GITHUB
+//  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
+//  List vs Vectors
+//  The assignment is evaluating your knowledge of the c++ language and how well you can write code
+
 }
 
 int main() {

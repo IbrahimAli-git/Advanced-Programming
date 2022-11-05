@@ -15,6 +15,10 @@ Car::Car(int number_of_doors, int number_of_seats) : number_of_doors(number_of_d
 
 }
 
+Car::Car(Vehicle& vehicle) {
+
+}
+
 Car::~Car() {
 
 }
@@ -36,14 +40,15 @@ void Car::setNumberOfSeats(int numberOfSeats) {
 }
 
 Car Car::createCar() {
-    cout << "Please enter age, registration number, make and model: ";
+    cout << "Please enter age, registration number, make and model: \n";
     cin >> age >> reg_number >> make >> model;
-    cout << "Please enter number of doors and number of seats: ";
+    cout << "Please enter number of doors and number of seats: \n";
     cin >> number_of_doors >> number_of_seats;
     Car c(number_of_doors, number_of_seats);
     c.setAge(age); c.setRegNumber(reg_number); c.setMake(make); c.setModel(model); c.setType("car");
     return c;
 }
+
 
 
 
