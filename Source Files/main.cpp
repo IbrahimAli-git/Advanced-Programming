@@ -59,7 +59,7 @@ void mainMenu() {
         }
     } while (option != 9);
     vehicle.printVehicles(vec);
-    deleteVehicles(vec, vehicle);
+    // deleteVehicles(vec, vehicle);
 //  Exception and error handling
 //  PUSH ALL OF YOUR CODE TO GITHUB
 //  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
@@ -69,9 +69,9 @@ void mainMenu() {
 }
 
 void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle){
-    for(int i = 0; i < vec.size(); i++)
+//    for(int i = 0; i < vec.size(); i++)
 
-        delete(vehicle);
+        // delete(vehicle);
 }
 
 int main() {
