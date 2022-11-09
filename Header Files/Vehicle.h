@@ -23,7 +23,8 @@ public:
     void sortByCostPerDay(vector<Vehicle> &vec);
     void sortByRegistrationNumber(vector<Vehicle> &vec);
     void printVehicles(vector<Vehicle> &vec);
-    void deleteVehicles(vector<Vehicle> &vec);
+//    bool comparator(Vehicle &lhs, Vehicle &rhs);
+    virtual int costPerDay();
     virtual int getAge() const;
     virtual void setAge(int age);
     virtual const string &getRegNumber() const;

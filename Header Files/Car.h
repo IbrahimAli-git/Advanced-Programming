@@ -16,11 +16,12 @@ public:
     Car();
     Car(int number_of_doors, int number_of_seats);
     ~Car();
+    Car createCar();
+    int costPerDay() override;
     int getNumberOfDoors() const;
     void setNumberOfDoors(int numberOfDoors);
     int getNumberOfSeats() const;
     void setNumberOfSeats(int numberOfSeats);
-    Car createCar();
 
     Car(Vehicle& vehicle);
 };

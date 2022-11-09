@@ -6,7 +6,8 @@
 #include "../Header Files/Bike.h"
 #include <iostream>
 #include <vector>
-
+#include "algorithm"
+#include "string"
 using namespace std;
 
 
@@ -143,27 +144,35 @@ void Vehicle::searchByNumberOfDoors(vector<Vehicle> &vec) {
 }
 
 void Vehicle::sortByCostPerDay(vector<Vehicle> &vec) {
-    for (int i = 0; i < vec.size(); i++) {
-        for (int j = 0; j < vec.size(); j++) {
-
+    // in pence
+    // Any costs per day less than £10 will be capped at £10
+    for (int i = 0; i < vec.size()-1; i++) {
+        for (int j = 0; j < vec.size()-1-i; j++) {
+            if(vec[j].costPerDay() > vec[j+1].costPerDay()){
+                swap(vec[j], vec[j+1]);
+            }
         }
     }
 }
 
+// print out the vehicles
 void Vehicle::sortByRegistrationNumber(vector<Vehicle> &vec){
-
+    for (int i = 0; i < vec.size()-1; i++) {
+        for (int j = 0; j < vec.size()-1-i; j++) {
+            if(vec[j].getRegNumber() > vec[j+1].getRegNumber()){
+                swap(vec[j], vec[j+1]);
+            }
+        }
+    }
 }
 
 void Vehicle::printVehicles(vector<Vehicle> &vec) {
     cout << "Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "------------------ - ------------      ----------\n";
     for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i].getRegNumber() << "\t\t\t\t\t" << vec[i].getType() << " \n";
+        // Use typeid instead of having a type variable but make sure it is dereferenced
+        cout << vec[i].getRegNumber() << "\t\t\t" << vec[i].costPerDay() << "\t\t" << vec[i].getType() << " \n";
     }
-}
-
-void Vehicle::deleteVehicles(vector<Vehicle> &vec){
-
 }
 
 int Vehicle::getAge() const {
@@ -205,3 +214,9 @@ const string &Vehicle::getType() const {
 void Vehicle::setType(const string &type) {
     Vehicle::type = type;
 }
+
+int Vehicle::costPerDay() {
+    return 0;
+}
+
+

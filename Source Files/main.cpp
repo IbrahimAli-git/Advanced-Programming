@@ -3,8 +3,9 @@
 #include "../Header Files/Vehicle.h"
 #include "../Header Files/Bike.h"
 #include <vector>
-
 using namespace std;
+
+void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle);
 
 //Registration Number     Cost Per Day	Vehicle Type
 //------------------ - ------------      ---------- -
@@ -58,12 +59,19 @@ void mainMenu() {
         }
     } while (option != 9);
     vehicle.printVehicles(vec);
+    deleteVehicles(vec, vehicle);
 //  Exception and error handling
 //  PUSH ALL OF YOUR CODE TO GITHUB
 //  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
 //  List vs Vectors
 //  The assignment is evaluating your knowledge of the c++ language and how well you can write code
+// How to override parent class method
+}
 
+void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle){
+    for(int i = 0; i < vec.size(); i++)
+
+        delete(vehicle);
 }
 
 int main() {

@@ -8,9 +8,8 @@ private:
 
 public:
     Bike();
-
     Bike(int engineSize, int numberOfWheels);
-
+    int costPerDay() override;
     ~Bike();
     int getEngineSize() const;
     void setEngineSize(int engineSize);
