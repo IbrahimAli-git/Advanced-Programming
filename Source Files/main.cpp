@@ -3,6 +3,7 @@
 #include "../Header Files/Vehicle.h"
 #include "../Header Files/Bike.h"
 #include <vector>
+
 using namespace std;
 
 void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle);
@@ -16,7 +17,7 @@ void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle);
 
 
 void mainMenu() {
-    vector<Vehicle > vec;
+    vector<Vehicle> vec;
     Vehicle vehicle;
     int option = 0;
 
@@ -61,17 +62,20 @@ void mainMenu() {
     vehicle.printVehicles(vec);
     // deleteVehicles(vec, vehicle);
 //  Exception and error handling
-//  PUSH ALL OF YOUR CODE TO GITHUB
 //  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
+// optimize code using inline functions, pass by ref, pointer instead of objects etc
 //  List vs Vectors
 //  The assignment is evaluating your knowledge of the c++ language and how well you can write code
 // How to override parent class method
+// Make sure it works on visual studio
+// For each loop instead of normal for where applicable
 }
 
-void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle){
+
+void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle) {
 //    for(int i = 0; i < vec.size(); i++)
 
-        // delete(vehicle);
+    // delete(vehicle);
 }
 
 int main() {

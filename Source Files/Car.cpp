@@ -1,6 +1,3 @@
-//
-// Created by Ibrahim on 28/10/2022.
-//
 #include <iostream>
 #include "../Header Files/Car.h"
 
@@ -14,7 +11,6 @@ Car::Car() {
 
 Car::Car(int number_of_doors, int number_of_seats) : number_of_doors(number_of_doors),
                                                      number_of_seats(number_of_seats) {
-
 }
 
 Car::Car(Vehicle &vehicle) {
@@ -36,34 +32,92 @@ Car Car::createCar() {
     c.setMake(make);
     c.setModel(model);
     c.setType("car");
+    c.setCostPerDay(getCostPerDay());
     return c;
 }
 
-int Car::costPerDay(){
+void Car::searchForCar(vector<Vehicle> &vec) {
+    int option = 0;
+    do {
+        cout << "Search for a car by :\n";
+        cout << "--------------------\n";
+        cout << "1) Registration number\n";
+        cout << "2) Number of seats\n";
+        cout << "3) Number of doors\n";
+        cout << "9) Return to main menu\n";
+        cout << "Please choose an option:\n";
+        cin >> option;
+        switch (option) {
+            case 1:
+                searchByRegNumber(vec);
+                break;
+            case 2:
+                searchByNumberOfSeats(vec);
+                break;
+            case 3:
+                searchByNumberOfDoors(vec);
+                break;
+            default:
+                cout << "Please enter option above\n";
+                break;
+        }
+
+    } while (option != 9);
+}
+
+void Car::searchByRegNumber(vector<Vehicle> &vec) {
+    cout << "Please enter registration number: \n";
+    string reg_number;
+    cin >> reg_number;
+    cout << "\n";
+    cout << "List of vehicles matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (int i = 0; i < vec.size(); i++) {
+        if (vec[i].getRegNumber() == reg_number) {
+            cout << vec[i].getRegNumber() << "\t\t\t\t\t" << vec[i].getType() << " \n";
+        }
+    }
+    cout << "\n";
+}
+
+void Car::searchByNumberOfSeats(vector<Vehicle> &vec) {
+    cout << "Please enter number of seats: \n";
+    int seats;
+    cin >> seats;
+    cout << "List of cars matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (auto &item: vec) {
+        if (item.getType() == "car") {
+            Car c = (Car) (item);
+            if (c.getNumberOfSeats() == seats) {
+                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+            }
+        }
+    }
+    cout << "\n";
+}
+
+void Car::searchByNumberOfDoors(vector<Vehicle> &vec) {
+    cout << "Please enter number of doors: \n";
+    int doors;
+    cin >> doors;
+    cout << "List of cars matching that search: \n";
+    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "------------------ - ------------      ----------\n";
+    for (auto &item: vec) {
+        if (item.getType() == "car") {
+            Car c = (Car) item;
+            if (c.getNumberOfDoors() == doors) {
+                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+            }
+        }
+    }
+    cout << "\n";
+}
+
+int Car::getCostPerDay() {
     int costPerDay = 2500 - (age * 150) - (number_of_doors * 200);
     return costPerDay;
 }
-
-int Car::getNumberOfDoors() const {
-    return number_of_doors;
-}
-
-void Car::setNumberOfDoors(int numberOfDoors) {
-    number_of_doors = numberOfDoors;
-}
-
-int Car::getNumberOfSeats() const {
-    return number_of_seats;
-}
-
-void Car::setNumberOfSeats(int numberOfSeats) {
-    number_of_seats = numberOfSeats;
-}
-
-
-
-
-
-
-
-
