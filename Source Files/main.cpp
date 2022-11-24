@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle);
+void deleteVehicles(vector<Vehicle *> &vec);
 
 //Registration Number     Cost Per Day	Vehicle Type
 //------------------ - ------------      ---------- -
@@ -17,8 +17,7 @@ void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle);
 
 
 void mainMenu() {
-    vector<Vehicle> vec;
-    Vehicle vehicle;
+    vector<Vehicle*> vec;
     int option = 0;
 
     do {
@@ -35,22 +34,22 @@ void mainMenu() {
         cin >> option;
         switch (option) {
             case 1:
-                vehicle.addVehicle(vec);
+                Vehicle::addVehicle(vec);
                 break;
             case 2:
-                vehicle.removeVehicle(vec);
+                Vehicle::removeVehicle(vec);
                 break;
             case 3:
-                vehicle.searchForCar(vec);
+                Vehicle::searchForCar(vec);
                 break;
             case 4:
-                vehicle.searchForBike(vec);
+                Vehicle::searchForBike(vec);
                 break;
             case 5:
-                vehicle.sortByRegistrationNumber(vec);
+                Vehicle::sortByRegistrationNumber(vec);
                 break;
             case 6:
-                vehicle.sortByCostPerDay(vec);
+                Vehicle::sortByCostPerDay(vec);
                 break;
             case 9:
                 break;
@@ -59,8 +58,10 @@ void mainMenu() {
                 break;
         }
     } while (option != 9);
-    vehicle.printVehicles(vec);
-    // deleteVehicles(vec, vehicle);
+    Vehicle::printVehicles(vec);
+    deleteVehicles(vec);
+}
+// deleteVehicles(vec, vehicle);
 //  Exception and error handling
 //  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
 // optimize code using inline functions, pass by ref, pointer instead of objects etc
@@ -69,13 +70,12 @@ void mainMenu() {
 // How to override parent class method
 // Make sure it works on visual studio
 // For each loop instead of normal for where applicable
-}
+// Make methods static where applicable e.g, vehicle class
 
 
-void deleteVehicles(vector<Vehicle> &vec, Vehicle vehicle) {
-//    for(int i = 0; i < vec.size(); i++)
-
-    // delete(vehicle);
+void deleteVehicles(vector<Vehicle *> &vec) {
+    for (auto &i: vec)
+        delete i;
 }
 
 int main() {

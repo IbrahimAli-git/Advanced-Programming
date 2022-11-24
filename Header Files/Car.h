@@ -1,12 +1,12 @@
 #pragma once
 #include "../Header Files/Vehicle.h"
 #include "../Header Files/Car.h"
-
 using namespace std;
 
 class Car : public Vehicle {
 
 private:
+    Car(Vehicle *vehicle);
     int number_of_doors, number_of_seats, cost_per_day;
 
 public:
@@ -16,7 +16,7 @@ public:
 
     ~Car();
 
-    Car createCar();
+    Car* createCar();
 
     int getCostPerDay() override;
 
@@ -32,13 +32,13 @@ public:
 
     Car(Vehicle &vehicle);
 
-    static void searchForCar(vector<Vehicle> &vec);
-    static void searchByRegNumber(vector<Vehicle> &vec);
-    static void searchByNumberOfSeats(vector<Vehicle> &vec);
-    static void searchByNumberOfDoors(vector<Vehicle> &vec);
+    static void searchForCar(vector<Vehicle *> &vec);
+    static void searchByRegNumber(vector<Vehicle*> &vec);
+    static void searchByNumberOfSeats(vector<Vehicle*> &vec);
+    static void searchByNumberOfDoors(vector<Vehicle*> &vec);
 };
 
-int Car::getNumberOfDoors() const {
+int Car::getNumberOfDoors() const  {
     return number_of_doors;
 }
 

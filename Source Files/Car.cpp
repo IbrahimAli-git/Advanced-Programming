@@ -17,26 +17,32 @@ Car::Car(Vehicle &vehicle) {
 
 }
 
+Car::Car(Vehicle *vehicle) {
+
+}
+
 Car::~Car() {
 
 }
 
-Car Car::createCar() {
+Car* Car::createCar() {
+    Car* c = new Car();
     cout << "Please enter age, registration number, make and model: \n";
     cin >> age >> reg_number >> make >> model;
     cout << "Please enter number of doors and number of seats: \n";
     cin >> number_of_doors >> number_of_seats;
-    Car c(number_of_doors, number_of_seats);
-    c.setAge(age);
-    c.setRegNumber(reg_number);
-    c.setMake(make);
-    c.setModel(model);
-    c.setType("car");
-    c.setCostPerDay(getCostPerDay());
+    c->setAge(age);
+    c->setRegNumber(reg_number);
+    c->setMake(make);
+    c->setModel(model);
+    c->setType("car");
+    c->setNumberOfDoors(number_of_doors);
+    c->setNumberOfSeats(number_of_seats);
+    c->setCostPerDay(getCostPerDay());
     return c;
 }
 
-void Car::searchForCar(vector<Vehicle> &vec) {
+void Car::searchForCar(vector<Vehicle *> &vec) {
     int option = 0;
     do {
         cout << "Search for a car by :\n";
@@ -65,23 +71,23 @@ void Car::searchForCar(vector<Vehicle> &vec) {
     } while (option != 9);
 }
 
-void Car::searchByRegNumber(vector<Vehicle> &vec) {
+void Car::searchByRegNumber(vector<Vehicle*> &vec) {
     cout << "Please enter registration number: \n";
     string reg_number;
     cin >> reg_number;
     cout << "\n";
-    cout << "List of vehicles matching that search: \n";
+    cout << "List of cars matching that search: \n";
     cout << "Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "------------------ - ------------      ----------\n";
-    for (int i = 0; i < vec.size(); i++) {
-        if (vec[i].getRegNumber() == reg_number) {
-            cout << vec[i].getRegNumber() << "\t\t\t\t\t" << vec[i].getType() << " \n";
+    for (auto & i : vec) {
+        if (i->getRegNumber() == reg_number) {
+            cout << i->getRegNumber() << "\t\t\t\t\t" << i->getType() << " \n";
         }
     }
     cout << "\n";
 }
 
-void Car::searchByNumberOfSeats(vector<Vehicle> &vec) {
+void Car::searchByNumberOfSeats(vector<Vehicle*> &vec) {
     cout << "Please enter number of seats: \n";
     int seats;
     cin >> seats;
@@ -89,17 +95,17 @@ void Car::searchByNumberOfSeats(vector<Vehicle> &vec) {
     cout << "Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "------------------ - ------------      ----------\n";
     for (auto &item: vec) {
-        if (item.getType() == "car") {
-            Car c = (Car) (item);
-            if (c.getNumberOfSeats() == seats) {
-                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+        if (item->getType() == "car") {
+            Car* c = dynamic_cast<Car*>(item);
+            if (c->getNumberOfSeats() == seats) {
+                cout << c->getRegNumber() << "\t\t\t\t\t" << c->getType() << " \n";
             }
         }
     }
     cout << "\n";
 }
 
-void Car::searchByNumberOfDoors(vector<Vehicle> &vec) {
+void Car::searchByNumberOfDoors(vector<Vehicle*> &vec) {
     cout << "Please enter number of doors: \n";
     int doors;
     cin >> doors;
@@ -107,10 +113,10 @@ void Car::searchByNumberOfDoors(vector<Vehicle> &vec) {
     cout << "Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "------------------ - ------------      ----------\n";
     for (auto &item: vec) {
-        if (item.getType() == "car") {
-            Car c = (Car) item;
-            if (c.getNumberOfDoors() == doors) {
-                cout << c.getRegNumber() << "\t\t\t\t\t" << c.getType() << " \n";
+        if (item->getType() == "car") {
+            Car* c = dynamic_cast<Car*>(item);
+            if (c->getNumberOfDoors() == doors) {
+                cout << c->getRegNumber() << "\t\t\t\t\t" << c->getType() << " \n";
             }
         }
     }
@@ -118,6 +124,7 @@ void Car::searchByNumberOfDoors(vector<Vehicle> &vec) {
 }
 
 int Car::getCostPerDay() {
-    int costPerDay = 2500 - (age * 150) - (number_of_doors * 200);
+    int costPerDay = 2500 - (getAge() * 150) - (getNumberOfDoors() * 200);
     return costPerDay;
 }
+

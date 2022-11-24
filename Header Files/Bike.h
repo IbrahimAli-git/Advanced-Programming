@@ -5,6 +5,8 @@
 class Bike : public Vehicle {
 
 private:
+    Bike(Vehicle *vehicle);
+
     int engine_size, number_of_wheels;
 
 public:
@@ -24,17 +26,17 @@ public:
 
     inline void setNumberOfWheels(int numberOfWheels);
 
-    Bike createBike();
+    Bike* createBike();
 
     Bike(Vehicle vehicle);
 
-    void searchForBike(vector<Vehicle> &vec);
+    static void searchForBike(vector<Vehicle*> &vec);
 
-    void searchByEngineSize(vector<Vehicle> &vec);
+    static void searchByEngineSize(vector<Vehicle*> &vec);
 
-    void searchByTwoOrThreeWheeler(vector<Vehicle> &vector);
+    static void searchByTwoOrThreeWheeler(vector<Vehicle*> &vector);
 
-    void searchByRegNumber(vector<Vehicle> &vec);
+    static void searchByRegNumber(vector<Vehicle*> &vec);
 };
 
 
