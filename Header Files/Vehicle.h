@@ -1,6 +1,6 @@
 #pragma once
+
 #include <string>
-#include <list>
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -9,7 +9,7 @@ class Vehicle {
 
 private:
 protected:
-    int age;
+    int age, cost_per_day;
     string reg_number, make, model, type;
 public:
     Vehicle();
@@ -28,28 +28,38 @@ public:
 
     static void sortByRegistrationNumber(vector<Vehicle *> &vec);
 
+    virtual int getCostPerDay();
+
     inline static void printVehicles(vector<Vehicle *> vec);
 
-//    bool comparator(Vehicle &lhs, Vehicle &rhs);
-    virtual int getCostPerDay();
     inline virtual int getAge() const;
+
     inline virtual void setAge(int age);
+
     inline virtual const string &getRegNumber() const;
+
     inline virtual void setRegNumber(const string &regNumber);
+
     inline virtual const string &getMake() const;
+
     inline virtual void setMake(const string &make);
+
     inline virtual const string &getModel() const;
+
     inline virtual void setModel(const string &model);
+
     inline const string &getType() const;
+
     inline void setType(const string &type);
+
+    inline void setCostPerDay(int costPerDay);
 };
 
 void Vehicle::printVehicles(vector<Vehicle *> vec) {
-    std::cout << "Registration Number  Cost Per Day	Vehicle Type\n";
-    std::cout << "------------------ - ------------      ----------\n";
-    for (auto & i : vec) {
-        // Use typeid instead of having a type variable but make sure it is dereferenced
-        std::cout << i->getRegNumber() << "\t\t\t" << i->getCostPerDay() << "\t\t" << i->getType() << " \n";
+    std::cout << "Registration Number  Cost Per Day	 Vehicle Type\n";
+    std::cout << "------------------   ------------  ----------\n";
+    for (auto &i: vec) {
+        std::cout << i->getRegNumber() << "\t\t\t" << i->getCostPerDay() << "\t" << typeid(i).name() << " \n";
     }
 }
 
@@ -91,4 +101,8 @@ const string &Vehicle::getType() const {
 
 void Vehicle::setType(const string &type) {
     Vehicle::type = type;
+}
+
+void Vehicle::setCostPerDay(int costPerDay) {
+    cost_per_day = costPerDay;
 }

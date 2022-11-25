@@ -1,22 +1,22 @@
 #pragma once
 #include "../Header Files/Vehicle.h"
 #include "../Header Files/Car.h"
-using namespace std;
 
 class Car : public Vehicle {
 
 private:
-    Car(Vehicle *vehicle);
-    int number_of_doors, number_of_seats, cost_per_day;
+    int number_of_doors, number_of_seats;
 
 public:
     Car();
+
+    Car(Vehicle *vehicle);
 
     Car(int number_of_doors, int number_of_seats);
 
     ~Car();
 
-    Car* createCar();
+    Car *createCar();
 
     int getCostPerDay() override;
 
@@ -28,17 +28,16 @@ public:
 
     inline void setNumberOfSeats(int numberOfSeats);
 
-    inline void setCostPerDay(int costPerDay);
-
-    Car(Vehicle &vehicle);
-
     static void searchForCar(vector<Vehicle *> &vec);
-    static void searchByRegNumber(vector<Vehicle*> &vec);
-    static void searchByNumberOfSeats(vector<Vehicle*> &vec);
-    static void searchByNumberOfDoors(vector<Vehicle*> &vec);
+
+    static void searchByRegNumber(vector<Vehicle *> &vec);
+
+    static void searchByNumberOfSeats(vector<Vehicle *> &vec);
+
+    static void searchByNumberOfDoors(vector<Vehicle *> &vec);
 };
 
-int Car::getNumberOfDoors() const  {
+int Car::getNumberOfDoors() const {
     return number_of_doors;
 }
 
@@ -52,8 +51,4 @@ int Car::getNumberOfSeats() const {
 
 void Car::setNumberOfSeats(int numberOfSeats) {
     number_of_seats = numberOfSeats;
-}
-
-void Car::setCostPerDay(int costPerDay) {
-    cost_per_day = costPerDay;
 }

@@ -8,18 +8,18 @@
 #include "string"
 using namespace std;
 
-
+// Default Constructor for allocating memory to objects
 Vehicle::Vehicle() {
     this->age = 0;
     this->make = "";
     this->model = "";
     this->reg_number = "";
 }
-
+// Destructor for deallocating memory
 Vehicle::~Vehicle() {
 
 }
-
+// For adding a vehicle, car or bike, to the container
 void Vehicle::addVehicle(vector<Vehicle*> &vec) {
     cout << "Would you like to enter a car or bike: \n";
     string userInput;
@@ -36,7 +36,8 @@ void Vehicle::addVehicle(vector<Vehicle*> &vec) {
     cout << "\n";
 }
 
-//https://iq.opengenus.org/ways-to-remove-elements-from-vector-cpp/
+// https://iq.opengenus.org/ways-to-remove-elements-from-vector-cpp/
+// For removing a vehicle by registration number
 void Vehicle::removeVehicle(vector<Vehicle *> &vec) {
     cout << "Please enter registration number: \n";
     string regNumber;
@@ -54,15 +55,15 @@ void Vehicle::removeVehicle(vector<Vehicle *> &vec) {
     cout << "Vehicle deleted\n";
     cout << "\n";
 }
-
+// For searching for a specific bike
 void Vehicle::searchForBike(vector<Vehicle *> &vec) {
     Bike::searchForBike(vec);
 }
-
+// For searching for a specific car
 void Vehicle::searchForCar(vector<Vehicle *> &vec) {
     Car::searchForCar(vec);
 }
-
+// For sorting the vehicles by cost per day
 void Vehicle::sortByCostPerDay(vector<Vehicle *> &vec) {
     // in pence
     // Any costs per day less than £10 will be capped at £10
@@ -74,7 +75,7 @@ void Vehicle::sortByCostPerDay(vector<Vehicle *> &vec) {
         }
     }
 }
-
+// For sorting the vehicles by registration number
 void Vehicle::sortByRegistrationNumber(vector<Vehicle *> &vec) {
     for (int i = 0; i < vec.size() - 1; i++) {
         for (int j = 0; j < vec.size() - 1 - i; j++) {
@@ -84,7 +85,7 @@ void Vehicle::sortByRegistrationNumber(vector<Vehicle *> &vec) {
         }
     }
 }
-
+// This method returns the cost per day and is overridden in subclasses
 int Vehicle::getCostPerDay() {
     return 0;
 }

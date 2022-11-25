@@ -1,22 +1,14 @@
 #include <iostream>
 #include "../Header Files/Car.h"
-#include "../Header Files/Vehicle.h"
-#include "../Header Files/Bike.h"
 #include <vector>
-
 using namespace std;
 
 void deleteVehicles(vector<Vehicle *> &vec);
 
-//Registration Number     Cost Per Day	Vehicle Type
-//------------------ - ------------      ---------- -
-//AB12 XYZ			£13.50		Car
-//CD34 LMN			£11.00		Car
-//EF56 OPQ			£24.00		Bike
-//GH78 RST			£19.50		Car
-
-
-void mainMenu() {
+// Displays the menu
+// https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170
+// https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170#exceptions_versus_assertions
+void menu() {
     vector<Vehicle*> vec;
     int option = 0;
 
@@ -61,24 +53,21 @@ void mainMenu() {
     Vehicle::printVehicles(vec);
     deleteVehicles(vec);
 }
-// deleteVehicles(vec, vehicle);
 //  Exception and error handling
-//  Have containers of pointers which mean you will need to create them using the new object "new Contact()"
-// optimize code using inline functions, pass by ref, pointer instead of objects etc
-//  List vs Vectors
+// use operator overloading when comparing two objects in the two sorting methods
 //  The assignment is evaluating your knowledge of the c++ language and how well you can write code
-// How to override parent class method
 // Make sure it works on visual studio
-// For each loop instead of normal for where applicable
 // Make methods static where applicable e.g, vehicle class
+// The program first loads a list of vehicles and displays them
+// use typeid in if statements in loops in bike and car
 
-
+// Method for deallocating object memory
 void deleteVehicles(vector<Vehicle *> &vec) {
     for (auto &i: vec)
         delete i;
 }
 
 int main() {
-    mainMenu();
+    menu();
     return 0;
 }
