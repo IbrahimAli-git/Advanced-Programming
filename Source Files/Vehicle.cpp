@@ -51,6 +51,8 @@ void Vehicle::removeVehicle(vector<Vehicle *> &vec) {
     }
 
     vec.erase(vec.begin() + index);
+    delete vec[index];
+
     // if vehicle was deleted than print out this
     cout << "Vehicle deleted\n";
     cout << "\n";

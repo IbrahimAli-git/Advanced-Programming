@@ -8,6 +8,7 @@ void deleteVehicles(vector<Vehicle *> &vec);
 // Displays the menu
 // https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170
 // https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170#exceptions_versus_assertions
+// https://www.w3schools.com/cpp/cpp_files.asp
 void menu() {
     vector<Vehicle*> vec;
     int option = 0;

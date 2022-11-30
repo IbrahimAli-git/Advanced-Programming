@@ -9,7 +9,7 @@ class Vehicle {
 
 private:
 protected:
-    int age, cost_per_day;
+    int age, cost_per_day, total_days_rented, total_rental_income;
     string reg_number, make, model, type;
 public:
     Vehicle();
@@ -53,6 +53,14 @@ public:
     inline void setType(const string &type);
 
     inline void setCostPerDay(int costPerDay);
+
+    inline int getTotalDaysRented() const;
+
+    inline void setTotalDaysRented(int totalDaysRented);
+
+    inline int getTotalRentalIncome() const;
+
+    inline void setTotalRentalIncome(int totalRentalIncome);
 };
 
 void Vehicle::printVehicles(vector<Vehicle *> vec) {
@@ -103,6 +111,23 @@ void Vehicle::setType(const string &type) {
     Vehicle::type = type;
 }
 
+int Vehicle::getTotalDaysRented() const {
+    return total_days_rented;
+}
+
+void Vehicle::setTotalDaysRented(int totalDaysRented) {
+    total_days_rented = totalDaysRented;
+}
+
+int Vehicle::getTotalRentalIncome() const {
+    return total_rental_income * cost_per_day;
+}
+
+void Vehicle::setTotalRentalIncome(int totalRentalIncome) {
+    total_rental_income = totalRentalIncome;
+}
+
 void Vehicle::setCostPerDay(int costPerDay) {
     cost_per_day = costPerDay;
 }
+
