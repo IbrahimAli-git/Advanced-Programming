@@ -18,6 +18,8 @@ public:
 
     ~Bike();
 
+    int numberOfWheels(int no_of_wheels);
+
     inline int getEngineSize() const;
 
     inline void setEngineSize(int engineSize);

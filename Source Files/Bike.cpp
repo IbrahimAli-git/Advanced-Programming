@@ -21,10 +21,19 @@ Bike::~Bike() {
 
 // Creates a bike object and returns a pointer to it
 Bike *Bike::createBike() {
-    cout << "Please enter age, registration number, make and model: \n";
-    cin >> age >> reg_number >> make >> model;
-    cout << "Please enter engine size and number of wheels: \n"; // number of wheels can only be two or three
-    cin >> engine_size >> number_of_wheels;
+    cout << "Please enter age: \n";
+    age = Vehicle::userInput(age);
+    cout << "Please enter registration number: \n";
+    cin >> reg_number;
+    cout << "Please enter make: \n";
+    cin >> make;
+    cout << "Please enter model: \n";
+    cin >> model;
+    cout << "Please enter engine size: \n";
+    engine_size = Vehicle::userInput(engine_size);
+    cout << "Please enter two or three wheeler: \n";
+    number_of_wheels = numberOfWheels(number_of_wheels);
+
     Bike *b = new Bike(engine_size, number_of_wheels);
     b->setAge(age);
     b->setRegNumber(reg_number);
@@ -34,6 +43,19 @@ Bike *Bike::createBike() {
     return b;
 }
 
+// Checks the user enters two or three wheels
+int Bike::numberOfWheels(int no_of_wheels) {
+    no_of_wheels = 0;
+    while(true){
+        no_of_wheels = Vehicle::userInput(no_of_wheels);
+        if (no_of_wheels == 2 || no_of_wheels == 3){
+            break;
+        } else {
+            cout<<"Please enter two or three wheels: \n";
+        }
+    }
+    return no_of_wheels;
+}
 
 // Menu for searching for a bike
 void Bike::searchForBike(vector<Vehicle *> &vec) {
@@ -130,3 +152,4 @@ int Bike::getCostPerDay() {
     int costPerDay = (1500 + getEngineSize());
     return costPerDay;
 }
+

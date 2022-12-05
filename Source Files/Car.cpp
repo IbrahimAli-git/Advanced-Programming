@@ -22,10 +22,12 @@ Car::~Car() {
 // Creates a car object and returns a pointer to it
 Car *Car::createCar() {
     Car *c = new Car();
-    cout << "Please enter age, registration number, make and model: \n";
-    cin >> age >> reg_number >> make >> model;
-    cout << "Please enter number of doors and number of seats: \n";
-    cin >> number_of_doors >> number_of_seats;
+    cout << "Please enter age: \n"; age = Vehicle::userInput(age);
+    cout << "Please enter registration number: \n"; cin >> reg_number;
+    cout << "Please enter make: \n"; cin >> make;
+    cout << "Please enter model: \n"; cin >> model;
+    cout << "Please enter number of doors \n"; number_of_doors = Vehicle::userInput(number_of_doors);
+    cout << "Please enter number of seats: \n"; number_of_seats = Vehicle::userInput(number_of_seats);
     c->setAge(age);
     c->setRegNumber(reg_number);
     c->setMake(make);
