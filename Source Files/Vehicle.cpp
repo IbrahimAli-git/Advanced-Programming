@@ -8,28 +8,31 @@
 #include "string"
 using namespace std;
 
-// Default Constructor for allocating memory to objects
+
+// Default Constructor
 Vehicle::Vehicle() {
     this->age = 0;
     this->make = "";
     this->model = "";
     this->reg_number = "";
 }
+
 // Destructor for deallocating memory
 Vehicle::~Vehicle() {
 
 }
+
 // For adding a vehicle, car or bike, to the container
-void Vehicle::addVehicle(vector<Vehicle*> &vec) {
+void Vehicle::addVehicle(vector<Vehicle *> &vec) {
     cout << "Would you like to enter a car or bike: \n";
     string userInput;
     cin >> userInput;
     if (userInput == "car") {
-        Car* c = new Car();
+        Car *c = new Car();
         c = c->createCar();
         vec.push_back(c);
     } else {
-        Bike* b = new Bike();
+        Bike *b = new Bike();
         b = b->createBike();
         vec.push_back(b);
     }
@@ -57,14 +60,17 @@ void Vehicle::removeVehicle(vector<Vehicle *> &vec) {
     cout << "Vehicle deleted\n";
     cout << "\n";
 }
+
 // For searching for a specific bike
 void Vehicle::searchForBike(vector<Vehicle *> &vec) {
     Bike::searchForBike(vec);
 }
+
 // For searching for a specific car
 void Vehicle::searchForCar(vector<Vehicle *> &vec) {
     Car::searchForCar(vec);
 }
+
 // For sorting the vehicles by cost per day
 void Vehicle::sortByCostPerDay(vector<Vehicle *> &vec) {
     // in pence
@@ -77,6 +83,7 @@ void Vehicle::sortByCostPerDay(vector<Vehicle *> &vec) {
         }
     }
 }
+
 // For sorting the vehicles by registration number
 void Vehicle::sortByRegistrationNumber(vector<Vehicle *> &vec) {
     for (int i = 0; i < vec.size() - 1; i++) {
@@ -87,7 +94,14 @@ void Vehicle::sortByRegistrationNumber(vector<Vehicle *> &vec) {
         }
     }
 }
+
 // This method returns the cost per day and is overridden in subclasses
 int Vehicle::getCostPerDay() {
     return 0;
 }
+
+
+/*ostream &operator<<(ostream &os, const Vehicle& veh) {
+    os << veh.getRegNumber() << "\t\t\t" << veh.cost_per_day << "\t" << typeid(veh).name() << " \n";
+    return os;
+}*/

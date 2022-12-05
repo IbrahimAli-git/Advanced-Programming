@@ -63,7 +63,6 @@ void Car::searchForCar(vector<Vehicle *> &vec) {
                 cout << "Please enter option above\n";
                 break;
         }
-
     } while (option != 9);
 }
 
@@ -73,15 +72,25 @@ void Car::searchByRegNumber(vector<Vehicle *> &vec) {
     string reg_number;
     cin >> reg_number;
     cout << "\n";
-    cout << "List of cars matching that search: \n";
-    cout << "Registration Number  Cost Per Day  Make  Model\n";
-    cout << "------------------ - ------------  ----  -----\n";
-    for (auto &i: vec) {
-        if (i->getRegNumber() == reg_number) {
-            cout << i->getRegNumber() << "\t\t\t" << i->getCostPerDay() << "\t\t" << i->getMake() << " "
-                 << i->getModel() << "\n";
+    cout << "   List of cars matching that search: \n";
+    cout << "   Registration Number  Cost Per Day  Make  Model\n";
+    cout << "   ------------------ - ------------  ----  -----\n";
+
+    for (int i = 0; i < vec.size(); ++i) {
+        if (vec[i]->getType() == "car"){
+            if (vec[i]->getRegNumber() == reg_number){
+                cout << i << "  " << vec[i]->getRegNumber() << "\t\t\t" << vec[i]->getCostPerDay() << "\t\t" << vec[i]->getMake()
+                     << " "
+                     << vec[i]->getModel() << "\n";
+            }
         }
     }
+
+    cout << "Enter number to choose vehicle or 0 to return to main menu: \n";
+    int option;
+    cin >> option;
+    if (option == 0) return;
+    Vehicle* v = vec[--option];
     cout << "\n";
 }
 
@@ -90,16 +99,18 @@ void Car::searchByNumberOfSeats(vector<Vehicle *> &vec) {
     cout << "Please enter number of seats: \n";
     int seats;
     cin >> seats;
-    cout << "List of cars matching that search: \n";
-    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
-    cout << "------------------ - ------------      ----------\n";
+    cout << "   List of cars matching that search: \n";
+    cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "   ------------------ - ------------      ----------\n";
     for (auto &item: vec) {
+        int index = 1;
         if (item->getType() == "car") {
             Car *c = dynamic_cast<Car *>(item);
             if (c->getNumberOfSeats() == seats) {
-                cout << c->getRegNumber() << "\t\t\t\t\t" << typeid(c).name() << " \n";
+                cout << index << "  " << c->getRegNumber() << "\t\t\t\t\t" << typeid(c).name() << " \n";
             }
         }
+        ++index;
     }
     cout << "\n";
 }
@@ -109,16 +120,18 @@ void Car::searchByNumberOfDoors(vector<Vehicle *> &vec) {
     cout << "Please enter number of doors: \n";
     int doors;
     cin >> doors;
-    cout << "List of cars matching that search: \n";
-    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
-    cout << "------------------ - ------------      ----------\n";
+    cout << "   List of cars matching that search: \n";
+    cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "   ------------------ - ------------      ----------\n";
     for (auto &item: vec) {
+        int index = 1;
         if (item->getType() == "car") {
             Car *c = dynamic_cast<Car *>(item);
             if (c->getNumberOfDoors() == doors) {
-                cout << c->getRegNumber() << "\t\t\t\t\t" << typeid(c).name() << " \n";
+                cout << index << "  " << c->getRegNumber() << "\t\t\t\t\t" << typeid(c).name() << " \n";
             }
         }
+        ++index;
     }
     cout << "\n";
 }

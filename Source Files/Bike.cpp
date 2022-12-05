@@ -71,31 +71,36 @@ void Bike::searchByRegNumber(vector<Vehicle *> &vec) {
     string reg_number;
     cin >> reg_number;
     cout << "\n";
-    cout << "List of bikes matching that search: \n";
-    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
-    cout << "------------------ - ------------      ----------\n";
+    cout << "   List of bikes matching that search: \n";
+    cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "   ------------------ - ------------      ----------\n";
     for (auto &i: vec) {
+        int index = 1;
         if (i->getRegNumber() == reg_number && i->getType() == "bike") {
-            cout << i->getRegNumber() << "\t\t\t\t\t" << typeid(i).name() << " \n";
+            cout << index << "  " << i->getRegNumber() << "\t\t\t\t\t" << typeid(i).name() << " \n";
         }
+        ++index;
     }
     cout << "\n";
 }
+
 // Searches for bikes by engine size
 void Bike::searchByEngineSize(vector<Vehicle *> &vec) {
     cout << "Please enter engine size\n";
     int engine_size = 0;
     cin >> engine_size;
-    cout << "List of bikes matching that search: \n";
-    cout << "Registration Number  Cost Per Day	Vehicle Type\n";
-    cout << "------------------ - ------------      ----------\n";
+    cout << "   List of bikes matching that search: \n";
+    cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "   ------------------ - ------------      ----------\n";
     for (auto &item: vec) {
+        int index = 1;
         if (item->getType() == "bike") {
             Bike *bike = dynamic_cast<Bike *>(item);
             if (bike->getEngineSize() == engine_size) {
-                cout << bike->getRegNumber() << "\t\t\t\t\t" << bike->getType() << " \n";
+                cout << index << "  " << bike->getRegNumber() << "\t\t\t\t\t" << bike->getType() << " \n";
             }
         }
+        ++index;
     }
     cout << "\n";
 }
@@ -105,17 +110,21 @@ void Bike::searchByTwoOrThreeWheeler(vector<Vehicle *> &vector) {
     cout << "Would you like to search by two or three wheeler: \n";
     int no_of_wheels;
     cin >> no_of_wheels;
+    cout << "   List of bikes matching that search: \n";
+    cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
+    cout << "   ------------------ - ------------      ----------\n";
     for (auto &item: vector) {
+        int index = 1;
         if (item->getType() == "bike") {
             Bike *bike = dynamic_cast<Bike *>(item);
             if (bike->getNumberOfWheels() == no_of_wheels) {
-                cout << bike->getRegNumber() << "\t\t\t\t\t" << bike->getType() << " \n";
+                cout << index << "  " << bike->getRegNumber() << "\t\t\t\t\t" << bike->getType() << " \n";
             }
         }
+        ++index;
     }
-
-
 }
+
 // Returns the cost per day for each bike
 int Bike::getCostPerDay() {
     int costPerDay = (1500 + getEngineSize());

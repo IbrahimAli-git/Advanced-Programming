@@ -3,13 +3,14 @@
 #include <string>
 #include <vector>
 #include <iostream>
+
 using namespace std;
 
 class Vehicle {
 
 private:
 protected:
-    int age, cost_per_day, total_days_rented, total_rental_income;
+    int age, total_days_rented, total_rental_income;
     string reg_number, make, model, type;
 public:
     Vehicle();
@@ -27,6 +28,10 @@ public:
     static void sortByCostPerDay(vector<Vehicle *> &vec);
 
     static void sortByRegistrationNumber(vector<Vehicle *> &vec);
+
+//    friend ostream& operator<< (ostream& os, const Vehicle& veh);
+
+//    void addToFile();
 
     virtual int getCostPerDay();
 
@@ -61,6 +66,8 @@ public:
     inline int getTotalRentalIncome() const;
 
     inline void setTotalRentalIncome(int totalRentalIncome);
+
+    int cost_per_day;
 };
 
 void Vehicle::printVehicles(vector<Vehicle *> vec) {
