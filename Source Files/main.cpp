@@ -6,6 +6,7 @@ using namespace std;
 
 void deleteVehicles(vector<Vehicle *> &vec);
 void initVector(vector<Vehicle*> &vec);
+int userInput(int option);
 
 // https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170
 // https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170#exceptions_versus_assertions
@@ -29,7 +30,8 @@ void menu() {
         cout << "5) Sort vehicles by registration number\n";
         cout << "6) Sort by cost per day\n";
         cout << "9) Exit\n";
-        cin >> option;
+        option = userInput(option);
+
         switch (option) {
             case 1:
                 Vehicle::addVehicle(vec);
@@ -59,11 +61,26 @@ void menu() {
     Vehicle::printVehicles(vec);
     deleteVehicles(vec);
 }
-// Exception and error handling
-// use operator overloading when comparing two objects in the two sorting methods | use generic method for it
+
+// use operator overloading when comparing two objects in the two sorting methods | use generic method for it | for files as well
 // Make sure it works on visual studio
 // use typeid in if statements in loops in bike and car
 // Formatting strings
+// Error handling for search car and bike | each should be asked on seperate lines
+
+// https://stackoverflow.com/questions/1283302/user-input-of-integers-error-handling
+int userInput(int option){
+    while (true){
+        if (!(cin >> option)) {
+            cin.clear();
+            cin.ignore();
+            cout << "Please enter a number\n";
+        } else {
+            break;
+        }
+    }
+    return option;
+}
 
 void initVector(vector<Vehicle*> &vec){
     Bike* b1 = new Bike();

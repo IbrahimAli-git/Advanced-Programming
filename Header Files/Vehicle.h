@@ -29,6 +29,8 @@ public:
 
     static void sortByRegistrationNumber(vector<Vehicle *> &vec);
 
+    static int userInput(int option);
+
 //    friend ostream& operator<< (ostream& os, const Vehicle& veh);
 
 //    void addToFile();
@@ -137,4 +139,3 @@ void Vehicle::setTotalRentalIncome(int totalRentalIncome) {
 void Vehicle::setCostPerDay(int costPerDay) {
     cost_per_day = costPerDay;
 }
-

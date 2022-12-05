@@ -31,10 +31,12 @@ void Vehicle::addVehicle(vector<Vehicle *> &vec) {
         Car *c = new Car();
         c = c->createCar();
         vec.push_back(c);
-    } else {
+    } else if(userInput == "bike") {
         Bike *b = new Bike();
         b = b->createBike();
         vec.push_back(b);
+    } else {
+        cout << "Please enter car or bike\n";
     }
     cout << "\n";
 }
@@ -98,6 +100,19 @@ void Vehicle::sortByRegistrationNumber(vector<Vehicle *> &vec) {
 // This method returns the cost per day and is overridden in subclasses
 int Vehicle::getCostPerDay() {
     return 0;
+}
+
+int Vehicle::userInput(int option) {
+    while (true){
+        if (!(cin >> option)) {
+            cin.clear();
+            cin.ignore();
+            cout << "Please enter a number\n";
+        } else {
+            break;
+        }
+    }
+    return option;
 }
 
 

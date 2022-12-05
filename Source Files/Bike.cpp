@@ -46,7 +46,7 @@ void Bike::searchForBike(vector<Vehicle *> &vec) {
         cout << "3) Two or Three-wheeler\n";
         cout << "9) Return to main menu\n";
         cout << "Please choose an option:\n";
-        cin >> option;
+        option = Vehicle::userInput(option);
         switch (option) {
             case 1:
                 searchByRegNumber(vec);
@@ -88,7 +88,7 @@ void Bike::searchByRegNumber(vector<Vehicle *> &vec) {
 void Bike::searchByEngineSize(vector<Vehicle *> &vec) {
     cout << "Please enter engine size\n";
     int engine_size = 0;
-    cin >> engine_size;
+    engine_size = Vehicle::userInput(engine_size);
     cout << "   List of bikes matching that search: \n";
     cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "   ------------------ - ------------      ----------\n";
@@ -108,8 +108,8 @@ void Bike::searchByEngineSize(vector<Vehicle *> &vec) {
 // Searches for bikes by two or three wheels
 void Bike::searchByTwoOrThreeWheeler(vector<Vehicle *> &vector) {
     cout << "Would you like to search by two or three wheeler: \n";
-    int no_of_wheels;
-    cin >> no_of_wheels;
+    int no_of_wheels = 0;
+    no_of_wheels = Vehicle::userInput(no_of_wheels);
     cout << "   List of bikes matching that search: \n";
     cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "   ------------------ - ------------      ----------\n";

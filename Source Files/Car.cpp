@@ -48,7 +48,7 @@ void Car::searchForCar(vector<Vehicle *> &vec) {
         cout << "3) Number of doors\n";
         cout << "9) Return to main menu\n";
         cout << "Please choose an option:\n";
-        cin >> option;
+        option = Vehicle::userInput(option);
         switch (option) {
             case 1:
                 searchByRegNumber(vec);
@@ -85,7 +85,6 @@ void Car::searchByRegNumber(vector<Vehicle *> &vec) {
             }
         }
     }
-
     cout << "Enter number to choose vehicle or 0 to return to main menu: \n";
     int option;
     cin >> option;
@@ -97,8 +96,8 @@ void Car::searchByRegNumber(vector<Vehicle *> &vec) {
 // Searches for cars by number of seats
 void Car::searchByNumberOfSeats(vector<Vehicle *> &vec) {
     cout << "Please enter number of seats: \n";
-    int seats;
-    cin >> seats;
+    int seats = 0;
+    seats = Vehicle::userInput(seats);
     cout << "   List of cars matching that search: \n";
     cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "   ------------------ - ------------      ----------\n";
@@ -118,8 +117,8 @@ void Car::searchByNumberOfSeats(vector<Vehicle *> &vec) {
 // Searches for cars by number of doors
 void Car::searchByNumberOfDoors(vector<Vehicle *> &vec) {
     cout << "Please enter number of doors: \n";
-    int doors;
-    cin >> doors;
+    int doors = 0;
+    doors = Vehicle::userInput(doors);
     cout << "   List of cars matching that search: \n";
     cout << "   Registration Number  Cost Per Day	Vehicle Type\n";
     cout << "   ------------------ - ------------      ----------\n";
